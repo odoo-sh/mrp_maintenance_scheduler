@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="maintenance_operations_step_form_view" model="ir.ui.view">
+        <field name="name">maintenance.operations.step.form</field>
+        <field name="model">maintenance.operations.step</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="step_name" />
+                    <field name="duration_expected" widget="float_time"/>
+                    <field name="procedure" />
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="maintenance_operations_form_view" model="ir.ui.view">
+        <field name="name">maintenance.operations.form</field>
+        <field name="model">maintenance.operations</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="steps" string="Maintenance Operation Steps">
+                            <field name="line_ids">
+                                <tree>
+                                    <field name="step_name" />
+                                    <field name="duration_expected" widget="float_time"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="maintenance_operations_tree_view" model="ir.ui.view">
+        <field name="name">maintenance.operations.tree</field>
+        <field name="model">maintenance.operations</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="maitenance_operation_action" model="ir.actions.act_window">
+        <field name="name">Maintenance Operation</field>
+        <field name="res_model">maintenance.operations</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="maintenance_operations_tree_view"/>
+    </record>
+
+    <menuitem
+        id="menu_maintenance_operation_configuration"
+        name="Maintenance Operations"
+        parent="maintenance.menu_maintenance_configuration"
+        action="maitenance_operation_action"
+        groups="base.group_user"
+        sequence="1" />
+
+</odoo>

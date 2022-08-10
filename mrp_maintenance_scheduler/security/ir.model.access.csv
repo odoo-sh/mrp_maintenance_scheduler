@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_maintenance_operations_user,maintenance.operations.user,model_maintenance_operations,base.group_user,1,1,1,0
+access_maintenance_operations_manager,maintenance.operations.manager,model_maintenance_operations,maintenance.group_equipment_manager,1,1,1,1
+access_maintenance_operations_step_user,maintenance.operations.step.user,model_maintenance_operations_step,base.group_user,1,1,1,0
+access_maintenance_operations_step_manager,maintenance.operations.step.manager,model_maintenance_operations_step,maintenance.group_equipment_manager,1,1,1,1
+access_maintenance_equipment_step_user,maintenance.equipment.step.user,model_maintenance_equipment_step,base.group_user,1,1,1,0
+access_maintenance_equipment_step_manager,maintenance.equipment.step.manager,model_maintenance_equipment_step,maintenance.group_equipment_manager,1,1,1,1
+access_maintenance_request_step_user,maintenance.request.step.user,model_maintenance_request_step,base.group_user,1,1,1,0
+access_maintenance_request_step_manager,maintenance.request.step.manager,model_maintenance_request_step,maintenance.group_equipment_manager,1,1,1,1
