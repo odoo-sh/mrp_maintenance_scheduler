@@ -22,5 +22,6 @@
         'views/res_config_settings.xml',
         'views/maintenance_equipment.xml',
         'views/maintenance_request.xml',
+        'views/assets.xml',
     ],
 }

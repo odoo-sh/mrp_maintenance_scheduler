@@ -7,3 +7,5 @@ access_maintenance_equipment_step_user,maintenance.equipment.step.user,model_mai
 access_maintenance_equipment_step_manager,maintenance.equipment.step.manager,model_maintenance_equipment_step,maintenance.group_equipment_manager,1,1,1,1
 access_maintenance_request_step_user,maintenance.request.step.user,model_maintenance_request_step,base.group_user,1,1,1,0
 access_maintenance_request_step_manager,maintenance.request.step.manager,model_maintenance_request_step,maintenance.group_equipment_manager,1,1,1,1
+access_maitenance_request_duration_user,maitenance.request.duration.user,model_maitenance_request_duration,base.group_user,1,1,1,0
+access_maitenance_request_duration_manager,maitenance.request.duration.manager,model_maitenance_request_duration,maintenance.group_equipment_manager,1,1,1,1
