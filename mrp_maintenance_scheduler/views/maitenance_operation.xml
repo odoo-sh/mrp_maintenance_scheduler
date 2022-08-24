@@ -20,11 +20,19 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <group>
-                        <group>
-                            <field name="name"/>
-                        </group>
-                    </group>
+                        <div>
+                            <group>
+                                <group>
+                                    <field name="name"/>
+                                    <field name="period"/>
+                                </group>
+                                <group>
+                                    <field name="maintenance_duration"/>
+                                    <field name="maintenance_team_id"/>
+                                    <field name="technician_user_id"/>
+                                </group>
+                            </group>
+                        </div>
                     <notebook>
                         <page name="steps" string="Maintenance Operation Steps">
                             <field name="line_ids">
@@ -36,6 +44,10 @@
                         </page>
                     </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
             </form>
         </field>
     </record>
@@ -46,6 +58,10 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <field name="period"/>
+                <field name="maintenance_duration"/>
+                <field name="maintenance_team_id"/>
+                <field name="technician_user_id"/>
             </tree>
         </field>
     </record>
