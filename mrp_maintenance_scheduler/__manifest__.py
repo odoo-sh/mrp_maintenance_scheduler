@@ -17,6 +17,7 @@
         'mrp',
     ],
     "data": [
+        'data/maintenance_cron.xml',
         'security/ir.model.access.csv',
         'views/maitenance_operation.xml',
         'views/res_config_settings.xml',
