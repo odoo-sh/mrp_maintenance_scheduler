@@ -27,7 +27,7 @@
                                     <field name="period"/>
                                 </group>
                                 <group>
-                                    <field name="maintenance_duration"/>
+                                    <field name="maintenance_duration" invisible="1"/>
                                     <field name="maintenance_team_id"/>
                                     <field name="technician_user_id"/>
                                 </group>
@@ -59,7 +59,7 @@
             <tree>
                 <field name="name"/>
                 <field name="period"/>
-                <field name="maintenance_duration"/>
+                <field name="maintenance_duration" invisible="1"/>
                 <field name="maintenance_team_id"/>
                 <field name="technician_user_id"/>
             </tree>
