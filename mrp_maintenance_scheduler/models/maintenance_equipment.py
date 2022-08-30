@@ -30,7 +30,7 @@ class MaintenanceEquipment(models.Model):
 
     @api.model
     def _cron_generate_multi_requests(self):
-        mt_eq_scheduler_ids = self.env['maintenance.equipment.scheduler'].search([('maintenance_operation_id.period','>',0),('next_action_date','=',fields.Date.today())])
+        mt_eq_scheduler_ids = self.env['maintenance.equipment.scheduler'].search([('maintenance_operation_id.period','>',0)])
         for mt_eq_scheduler_id in mt_eq_scheduler_ids:
             next_requests = self.env['maintenance.request'].search([('stage_id.done', '=', False),
                                                     ('equipment_id', '=', mt_eq_scheduler_id.maintenance_equipment_id.id),
