@@ -50,7 +50,7 @@ class MaintenanceEquipmentScheduler(models.Model):
     maintenance_operation_id = fields.Many2one('maintenance.operations',string="Maintenance Operation")
     next_action_date = fields.Date(compute='_compute_next_maintenance',store=True,string='Next Preventive Maintenance(Days)',readonly=False)
 
-    @api.depends('maintenance_equipment_id.effective_date', 'maintenance_operation_id.period', 'maintenance_equipment_id.maintenance_ids.request_date', 'maintenance_equipment_id.maintenance_ids.close_date')
+    @api.depends('maintenance_operation_id.period', 'maintenance_equipment_id.maintenance_ids.request_date', 'maintenance_equipment_id.maintenance_ids.close_date')
     def _compute_next_maintenance(self):
         date_now = fields.Date.context_today(self)
         mt_eq_scheduler_ids = self.filtered(lambda x: x.maintenance_operation_id.period > 0)
