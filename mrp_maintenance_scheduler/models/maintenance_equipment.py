@@ -48,7 +48,7 @@ class MaintenanceEquipmentScheduler(models.Model):
     
     maintenance_equipment_id = fields.Many2one("maintenance.equipment")
     maintenance_operation_id = fields.Many2one('maintenance.operations',string="Maintenance Operation")
-    next_action_date = fields.Date(compute='_compute_next_maintenance',store=True,string='Next Preventive Maintenance')
+    next_action_date = fields.Date(compute='_compute_next_maintenance',store=True,string='Next Preventive Maintenance(Days)',readonly=False)
 
     @api.depends('maintenance_equipment_id.effective_date', 'maintenance_operation_id.period', 'maintenance_equipment_id.maintenance_ids.request_date', 'maintenance_equipment_id.maintenance_ids.close_date')
     def _compute_next_maintenance(self):
@@ -91,7 +91,7 @@ class MaintenanceEquipmentScheduler(models.Model):
                 if next_date < date_now:
                     next_date = date_now
             else:
-                next_date = mt_eq_scheduler_id.maintenance_equipment_id.effective_date + timedelta(days=mt_eq_scheduler_id.maintenance_operation_id.period)
+                next_date = fields.Datetime.today() + timedelta(days=mt_eq_scheduler_id.maintenance_operation_id.period)
             mt_eq_scheduler_id.next_action_date = next_date
         (self - mt_eq_scheduler_ids).next_action_date = False
     
