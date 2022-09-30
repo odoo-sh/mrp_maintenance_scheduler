@@ -16,6 +16,11 @@ class MaintenanceOperations(models.Model):
     maintenance_team_id = fields.Many2one('maintenance.team', string='Maintenance Team',required=True)
     line_ids = fields.One2many("maintenance.operations.step","operation_id",string="Steps")
 
+    @api.onchange('maintenance_team_id')
+    def onchange_maintenance_team_id(self):
+        if self.maintenance_team_id.name in ['IT', 'Internal Maintenance']:
+            return {'domain': {'technician_user_id': [('share', '=', False)]}}
+        return {'domain': {'technician_user_id': [('id', 'in', self.env['res.users'].search([]).ids)]}}
 
 class MaintenanceOperationsLine(models.Model):
     _name = "maintenance.operations.step"
