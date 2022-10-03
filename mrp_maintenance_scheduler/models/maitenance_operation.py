@@ -20,7 +20,7 @@ class MaintenanceOperations(models.Model):
     def onchange_maintenance_team_id(self):
         if self.maintenance_team_id.name in ['IT', 'Internal Maintenance']:
             return {'domain': {'technician_user_id': [('share', '=', False)]}}
-        return {'domain': {'technician_user_id': [('id', 'in', self.env['res.users'].search([]).ids)]}}
+        return {'domain': {'technician_user_id': [(1,'=',1)]}}
 
 class MaintenanceOperationsLine(models.Model):
     _name = "maintenance.operations.step"
