@@ -42,6 +42,10 @@
                     </page>
                 </notebook>
             </xpath>
+            <xpath expr="//field[@name='user_id']" position="replace">
+                <field name="member_ids" invisible="1"/>
+                <field name="user_id" string="Responsible" domain="[('id','in',member_ids)]" attrs="{'invisible': [('member_ids', '=', [])]}"/>
+            </xpath>
         </field>
         </record>
 </odoo>

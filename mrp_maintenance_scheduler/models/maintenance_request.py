@@ -11,11 +11,17 @@ class MaintenanceRequest(models.Model):
     maintenance_request_step_ids = fields.One2many("maintenance.request.step","maintenance_request_id")
     maintenance_operation_id = fields.Many2one('maintenance.operations',string="Maintenance Operation")
     duration = fields.Float(help="Duration in hours.",compute="_compute_duration_for_request_in_hours")
+    member_ids = fields.Many2many(related='maintenance_team_id.member_ids')
 
     def _compute_duration_for_request_in_hours(self):
         for record in self:
             total_minutes = round(sum(record.maintenance_request_step_ids.mapped('duration')),2)
             record.duration = total_minutes / 60.0
+
+    @api.onchange('maintenance_team_id')
+    def onchange_maintenance_team_id(self):
+        if self.maintenance_team_id.name in ['IT', 'Internal Maintenance', 'Outside Maintenance']:
+            self.user_id = None
 
 class MaintenanceRequeststep(models.Model):
     _name = "maintenance.request.step"
